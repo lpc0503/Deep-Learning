@@ -1,27 +1,15 @@
-Using 2-Dimension perceptron
+Using 3-Dimension perceptron
 Intial w and b
 w:
-[ 0.1 -0.1]
+[0.03710121 4.58256309 4.62585027]
 
-b:
-1
+In epoch 1 detect 10 error(s)
+In epoch 2 detect 0 error(s)
+Total epoch: 2
 
-In epoch 1 detect 11 error(s)
-In epoch 2 detect 6 error(s)
-In epoch 3 detect 7 error(s)
-In epoch 4 detect 6 error(s)
-In epoch 5 detect 7 error(s)
-In epoch 6 detect 7 error(s)
-In epoch 7 detect 3 error(s)
-In epoch 8 detect 0 error(s)
-Total epoch: 8
-
-Final w and b:
+Final w:
 w:
-[[ 82.1 127.9]]
-
-b:
-3.0
+[ 2.03710121 18.58256309 27.62585027]
 
 result: 
 1 1

@@ -5,23 +5,17 @@ ALPHA = 1
 
 class Neuron:
 
-	def __init__(self, dimension=2):
+	def __init__(self, dimension):
 		self.dimension = dimension
-		self.w = np.zeros(2)
-		self.b = 0
+		self.w = np.zeros(dimension)
 		self.e = 0
 		self.countError = 0
 		self.init()
 
 	def init(self):
-		self.w[0] = 0.1
-		self.w[1] = -0.1
-		# for i in range(0, self.neruonNumber):
-		# 	for j in range(0, self.dimension):
-		# 		self.w[i][j] = random.uniform(-10, 10)
-
-
-		self.b = 1
+		self.w[0] = random.uniform(-10, 10)
+		self.w[1] = random.uniform(-10, 10)
+		self.w[2] = random.uniform(-10, 10)
 	
 	def hardlims(self, inp):
 		res = 0
@@ -35,12 +29,11 @@ class Neuron:
 		self.e = ALPHA * (t-a)
 		# print(self.e)
 
-	def update(self, inp):
-		self.w = self.e * inp.T + self.w
-		self.b = self.e + self.b
+	def update(self, x, y):
+		self.w = self.w + y * x * ALPHA
 
-	def hasError(self):
-		if self.e != 0:
+	def hasError(self, y, t):
+		if y != t:
 			self.countError += 1
 			return True
 		else:
