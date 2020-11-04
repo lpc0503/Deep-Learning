@@ -21,4 +21,4 @@ if __name__ == "__main__":
 
 	network.classify(testData)
 
-	network.draw(trainData, testingData)
+	network.draw(trainData, testData)

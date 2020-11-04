@@ -2,7 +2,7 @@ import random
 import numpy as np
 import math
 
-ALPHA = 1
+ALPHA = 0.1
 
 class Neuron:
 
@@ -32,7 +32,7 @@ class Neuron:
 		return res	 # hotfix
 
 	def segmoid(self, inp):
-		return 1.0 / (1.0 + math.exp(-inp))
+		return (1.0 / (1.0 + np.exp(-inp)))
 
 	def calError(self, a, t):
 		self.e = ALPHA * (t-a)
