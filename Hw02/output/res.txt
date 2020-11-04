@@ -1,0 +1,12 @@
+Using 3-Dimension perceptron
+Intial w and b
+w:
+[-0.35284277 -0.8642738  -1.9749607 ]
+
+stop training for error measure is small enough
+Total epoch: 70
+
+Final w:
+w:
+[-7.8754967   5.2681411   5.18678678]
+
