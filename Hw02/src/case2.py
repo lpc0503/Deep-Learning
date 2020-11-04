@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
 	network = Network()	
 
-	trainingData = open("data/train.txt", "r")
+	trainingData = open("data/case2.txt", "r")
 	trainData = trainingData.readlines()
 
 	network.createNeuron()

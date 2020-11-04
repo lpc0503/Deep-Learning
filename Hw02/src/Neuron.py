@@ -9,14 +9,19 @@ class Neuron:
 	def __init__(self, dimension):
 		self.dimension = dimension
 		self.w = np.zeros(dimension)
+		self.init_w = self.w
 		self.e = 0
 		self.countError = 0
 		self.init()
 
 	def init(self):
-		self.w[0] = random.uniform(-10, 10)
-		self.w[1] = random.uniform(-10, 10)
-		self.w[2] = random.uniform(-10, 10)
+		# self.w[0] = random.uniform(-10, 10)
+		# self.w[1] = random.uniform(-10, 10)
+		# self.w[2] = random.uniform(-10, 10)
+		self.w[0] = 1
+		self.w[1] = 1
+		self.w[2] = 1
+		self.init_w = self.w
 	
 	def hardlims(self, inp):
 		res = 0
@@ -27,7 +32,7 @@ class Neuron:
 		return res	 # hotfix
 
 	def segmoid(self, inp):
-		return 1 / (1 + math.exp(-inp))
+		return 1.0 / (1.0 + math.exp(-inp))
 
 	def calError(self, a, t):
 		self.e = ALPHA * (t-a)

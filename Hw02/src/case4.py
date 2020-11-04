@@ -9,11 +9,16 @@ if __name__ == "__main__":
 
 	network = Network()	
 
-	trainingData = open("data/train.txt", "r")
+	trainingData = open("data/case4.txt", "r")
 	trainData = trainingData.readlines()
 
 	network.createNeuron()
 
 	network.train(trainData)
 
-	network.draw(trainData)
+	testingData = open("data/case4_test.txt", "r")
+	testData = testingData.readlines()
+
+	network.classify(testData)
+
+	network.draw(trainData, testingData)
