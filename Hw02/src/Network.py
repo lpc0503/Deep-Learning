@@ -18,7 +18,7 @@ class Network:
 		return math.sqrt(sum_/len_)
 
 	def cross_entropy(self, y, y_hat):
-		ret = -(y * np.log(y_hat) + (1-y)*np.log(1.0000001-y_hat))
+		ret = -(y * np.log(y_hat) + (1-y)*np.log(1.-y_hat))
 		return ret > Tou
 
 	def train(self, trainingData):
@@ -27,8 +27,9 @@ class Network:
 		p = []
 		epoch = 0
 		
-		printToFile("Using {}-Dimension perceptron\nIntial w and b".format(self.neuron.dimension))
+		printToFile("Using {}-Dimension Logistic Regression\nIntial w and b".format(self.neuron.dimension))
 		printToFile("w:\n{}\n".format(self.neuron.w))
+		printToFile("Learning Rate is {}".format(getAlpha()))
 		epoch = 0
 		while True:
 
@@ -37,7 +38,7 @@ class Network:
 
 				x1, x2, t = data.split(',')
 				p = np.array([float(1), float(x1), float(x2)])
-				y = self.neuron.segmoid(self.neuron.w.dot(p.T))
+				y = self.neuron.sigmoid(self.neuron.w.dot(p.T))
 
 				if(self.cross_entropy(float(t), y)):
 					self.neuron.update(p, float(t), y)
@@ -67,7 +68,9 @@ class Network:
 			x1, x2 = data.split(',')
 			p = np.array([float(1), float(x1), float(x2)])
 
-			a = self.neuron.hardlims(self.neuron.w.dot(p))
+			a = self.neuron.sigmoid(self.neuron.w.dot(p))
+
+			a = 1 if a >= 0.5 else 0
 
 			self.testT.append(float(a))
 			printToFile(str(cnt) + " " + str(a))
@@ -75,7 +78,7 @@ class Network:
 			cnt += 1
 
 
-	def draw(self, trainingData, testingData=None):
+	def draw(self, filename, trainingData, testingData=None):
 
 		x1 = []
 		y1 = []
@@ -112,7 +115,7 @@ class Network:
 
 		bound = max(max(x1), max(x2), max(y1), max(y2))
 
-		a = np.arange(0, bound+3, 0.1)
+		a = np.arange(-3, bound+3, 0.1)
 		b = -(a * self.neuron.w[1] + self.neuron.w[0])/self.neuron.w[2]
 
 		init_b = -(a * self.neuron.init_w[1] + self.neuron.init_w[0])/self.neuron.init_w[2]
@@ -127,9 +130,6 @@ class Network:
 
 		plt.title("Training and Testing Data", size = 20)
 
-		# plt.xlabel('x1', size = 12, labelpad = 10)	# x軸
-		# plt.ylabel('x2', size = 12, labelpad = 10, rotation = 'horizontal')	# y軸
-
 		plt.plot(x1, y1, 'ko', label='1(Training)');
 		plt.plot(x2, y2, 'ro', label='0(Training)');
 
@@ -139,7 +139,7 @@ class Network:
 
 		plt.legend(loc = "best")
 
-		plt.savefig("output/output.png") 
+		plt.savefig("output/" + filename) 
 
 		plt.show()
 		

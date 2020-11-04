@@ -2,7 +2,11 @@ import random
 import numpy as np
 import math
 
-ALPHA = 0.1
+ALPHA = random.uniform(0, 1)
+
+def getAlpha():
+	global ALPHA
+	return ALPHA
 
 class Neuron:
 
@@ -15,12 +19,12 @@ class Neuron:
 		self.init()
 
 	def init(self):
-		# self.w[0] = random.uniform(-10, 10)
-		# self.w[1] = random.uniform(-10, 10)
-		# self.w[2] = random.uniform(-10, 10)
-		self.w[0] = 1
-		self.w[1] = 1
-		self.w[2] = 1
+		self.w[0] = random.uniform(-3, 3)
+		self.w[1] = random.uniform(-3, 3)
+		self.w[2] = random.uniform(-3, 3)
+		# self.w[0] = 1
+		# self.w[1] = 1
+		# self.w[2] = 1
 		self.init_w = self.w
 	
 	def hardlims(self, inp):
@@ -31,7 +35,7 @@ class Neuron:
 			res = -1
 		return res	 # hotfix
 
-	def segmoid(self, inp):
+	def sigmoid(self, inp):
 		return (1.0 / (1.0 + np.exp(-inp)))
 
 	def calError(self, a, t):

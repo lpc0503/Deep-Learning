@@ -7,6 +7,8 @@ from pch import *
 
 if __name__ == "__main__":
 
+	openFile("case4.txt")
+
 	network = Network()	
 
 	trainingData = open("data/case4.txt", "r")
@@ -21,4 +23,4 @@ if __name__ == "__main__":
 
 	network.classify(testData)
 
-	network.draw(trainData, testData)
+	network.draw("case4", trainData, testData)

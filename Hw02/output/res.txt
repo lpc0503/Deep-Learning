@@ -1,5 +1,0 @@
-Using 3-Dimension perceptron
-Intial w and b
-w:
-[1. 1. 1.]
-
