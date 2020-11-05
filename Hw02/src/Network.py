@@ -40,8 +40,8 @@ class Network:
 				p = np.array([float(1), float(x1), float(x2)])
 				y = self.neuron.sigmoid(self.neuron.w.dot(p.T))
 
+				self.neuron.update(p, float(t), y)
 				if(self.cross_entropy(float(t), y)):
-					self.neuron.update(p, float(t), y)
 					errorCnt += 1
 
 			epoch += 1
