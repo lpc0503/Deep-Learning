@@ -1,15 +1,15 @@
 Using 3-Dimension Logistic Regression
 Intial w and b
 w:
-[ 1.79902881 -1.78350107 -2.53978338]
+[ 2.82735263  2.31937409 -1.32118722]
 
-Learning Rate is 0.4566175133179483
+Learning Rate is 0.4230120157813213
 stop training for error measure is small enough
-Total epoch: 92520
+Total epoch: 90751
 
 Final w:
 w:
-[-13095.54300036    -43.10380744    454.87948607]
+[-11929.24656131    -46.59913501    432.93264057]
 
 result: 
 1 1
