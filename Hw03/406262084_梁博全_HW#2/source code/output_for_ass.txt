@@ -1,3 +1,0 @@
-epoch limitation: 80000
-T: 0.2
---------------------I am the Divider--------------------
